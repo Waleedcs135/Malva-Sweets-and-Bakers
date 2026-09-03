@@ -1,0 +1,32 @@
+.tradition-section {
+  background-color: var(--color-bg-alt);
+  padding: 100px 0;
+  text-align: center;
+}
+
+.tradition-container {
+  max-width: 800px;
+}
+
+.tradition-title {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: var(--color-text-dark);
+}
+
+.tradition-content p {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .tradition-section {
+    padding: 60px 0;
+  }
+  
+  .tradition-title {
+    font-size: 2rem;
+  }
+}
