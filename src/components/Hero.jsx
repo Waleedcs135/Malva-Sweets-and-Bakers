@@ -4,7 +4,7 @@ import './Hero.css';
 const Hero = () => {
   return (
     <section className="hero">
-      <div className="hero-bg" style={{ backgroundImage: 'url(/images/hero-tea-cake.png)' }}></div>
+      <div className="hero-bg" style={{ backgroundImage: 'url(/images/hero-tea-cake.jpg)' }}></div>
       <div className="hero-content">
         <h3 className="hero-subtitle animate-fade-in">Signature</h3>
         <h1 className="hero-title animate-fade-in">Plain Tea Cake</h1>
