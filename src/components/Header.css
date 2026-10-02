@@ -156,6 +156,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.cart-count.has-items {
+  background-color: var(--color-primary);
+  animation: cartBadgePop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes cartBadgePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
 }
 
 .hamburger {

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { categoriesList, giftingCategories, allProducts } from '../data/mockData';
+import { useCart } from '../context/CartContext';
 import '../components/Categories.css';
 
 const CategoryPage = () => {
   const { id } = useParams();
+  const { addToCart } = useCart();
+  const [addedItems, setAddedItems] = useState({});
 
   // Find the category info from either standard categories or gifting categories
   const categoryInfo = 
@@ -12,6 +15,15 @@ const CategoryPage = () => {
     giftingCategories.find(c => c.id === id);
 
   const activeProducts = allProducts.filter(p => p.categoryId === id);
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    // Show "Added!" feedback on the button briefly
+    setAddedItems(prev => ({ ...prev, [product.id]: true }));
+    setTimeout(() => {
+      setAddedItems(prev => ({ ...prev, [product.id]: false }));
+    }, 1200);
+  };
 
   if (!categoryInfo) {
     return (
@@ -38,7 +50,12 @@ const CategoryPage = () => {
                   <div className="product-img-wrapper">
                     <img src={product.image} alt={product.name} className="product-image" />
                     <div className="product-overlay">
-                      <button className="add-to-cart-btn">Add to Cart</button>
+                      <button
+                        className={`add-to-cart-btn ${addedItems[product.id] ? 'added' : ''}`}
+                        onClick={() => handleAddToCart(product)}
+                      >
+                        {addedItems[product.id] ? '✓ Added' : 'Add to Cart'}
+                      </button>
                     </div>
                   </div>
                   <div className="product-info">
